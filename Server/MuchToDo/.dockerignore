@@ -1,0 +1,74 @@
+# Git files
+.git
+.gitignore
+.gitattributes
+
+# Documentation
+README.md
+*.md
+docs/
+
+# CI/CD
+.github/
+.gitlab-ci.yml
+Jenkinsfile
+
+# Docker files
+Dockerfile*
+docker-compose*.yml
+.dockerignore
+
+# Kubernetes files
+kubernetes/
+k8s/
+*.yaml
+*.yml
+
+# Development files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Test files
+*_test.go
+testdata/
+
+# Build artifacts
+bin/
+dist/
+build/
+*.exe
+*.dll
+*.so
+*.dylib
+
+# Environment files
+.env
+.env.*
+*.local
+
+# Logs
+*.log
+logs/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# Dependencies (will be downloaded in container)
+vendor/
+
+# Coverage reports
+coverage.txt
+coverage.html
+*.out
+
+# Scripts
+scripts/
