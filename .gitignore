@@ -1,0 +1,60 @@
+# Binaries
+bin/
+dist/
+build/
+*.exe
+*.dll
+*.so
+*.dylib
+
+# Test binary, built with `go test -c`
+*.test
+
+# Output of the go coverage tool
+*.out
+coverage.txt
+coverage.html
+
+# Dependency directories
+vendor/
+
+# Go workspace file
+go.work
+
+# Environment files
+.env
+.env.*
+*.local
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Docker
+*.log
+
+# Kubernetes
+kubeconfig
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# Evidence screenshots (commit these)
+# evidence/
+
+# OS files
+Thumbs.db
+
+# Don't ignore evidence folder
+!evidence/
+!evidence/*.png
+!evidence/*.jpg
+!evidence/*.jpeg
+QUICK_START.md
+README.md
