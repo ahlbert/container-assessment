@@ -15,8 +15,6 @@ services:
         "--replSet",
         "rs0",
         "--bind_ip_all",
-        "--keyFile",
-        "/data/keyfile/mongodb.key",
       ]
     # Create a keyfile and mount it to the container
     # openssl rand -base64 756 > mongodb.key && chmod 400 mongodb.key
@@ -77,6 +75,29 @@ services:
       - "8082:8081"
     environment:
       - REDIS_HOSTS=local:${REDIS_HOST:-redis}:${REDIS_PORT:-6379}
+    networks:
+      - backend
+
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: much_to_do_backend
+    restart: unless-stopped
+    env_file:
+      - .env
+    ports:
+      - "${BACKEND_PORT:-8000}:8000"
+    environment:
+      MONGO_URI: mongodb://${MONGO_INITDB_ROOT_USERNAME:-root}:${MONGO_INITDB_ROOT_PASSWORD:-example}@mongodb:27017/${DB_NAME:-much_todo_db}?authSource=admin&replicaSet=rs0&directConnection=true
+      REDIS_HOST: ${REDIS_HOST:-redis}
+      REDIS_PORT: ${REDIS_PORT:-6379}
+    depends_on:
+      mongodb:
+          condition: service_healthy
+      redis:
+          condition: service_healthy
+
     networks:
       - backend
 

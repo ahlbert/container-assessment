@@ -1,6 +1,6 @@
 # Multi-stage Dockerfile for Golang Backend Application
 # Stage 1: Build stage
-FROM golang:1.21-alpine AS builder
+FROM golang:1.25-alpine AS builder
 
 # Install build dependencies
 RUN apk add --no-cache git ca-certificates tzdata
@@ -16,6 +16,8 @@ RUN go mod download
 
 # Copy source code
 COPY . .
+
+RUN go install github.com/swaggo/swag/cmd/swag@latest && swag init -g ./cmd/api/main.go -o ./docs
 
 # Build the application
 # CGO_ENABLED=0 for static binary
