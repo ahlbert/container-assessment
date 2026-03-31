@@ -9,12 +9,14 @@ services:
       MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME:-root}
       MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD:-example}
       MONGO_INITDB_DATABASE: ${DB_NAME:-much_todo_db}
-    # Use a command that sets permissions and then starts mongod
+    # Use a command that sets permissions and then starts mongodb
     command:
       [
         "--replSet",
         "rs0",
         "--bind_ip_all",
+        "--keyFile",
+        "/data/keyfile/mongodb.key",
       ]
     # Create a keyfile and mount it to the container
     # openssl rand -base64 756 > mongodb.key && chmod 400 mongodb.key
@@ -96,7 +98,7 @@ services:
       mongodb:
           condition: service_healthy
       redis:
-          condition: service_healthy
+          condition: service_started
 
     networks:
       - backend

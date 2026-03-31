@@ -45,7 +45,7 @@ build/
 *.dylib
 
 # Environment files
-.env
+
 .env.*
 *.local
 
@@ -72,3 +72,5 @@ coverage.html
 
 # Scripts
 scripts/
+
+mongodb.key

@@ -42,6 +42,7 @@ WORKDIR /app
 
 # Copy binary from builder stage
 COPY --from=builder /build/muchtodo-api .
+COPY --from=builder /build/.env /app/.env
 
 # Copy any static files or templates if needed
 # COPY --from=builder /build/templates ./templates
