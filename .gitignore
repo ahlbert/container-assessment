@@ -57,5 +57,4 @@ Thumbs.db
 !evidence/*.jpg
 !evidence/*.jpeg
 QUICK_START.md
-README.md
 server/MuchToDo/mongodb.key
